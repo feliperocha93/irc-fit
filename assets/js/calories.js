@@ -1,14 +1,16 @@
-const form = document.getElementById('form');
-form.addEventListener('submit', handleSubmit);
+import { inputNumber, selected, setResult } from './generic.js';
+
+const getckalForm = document.getElementById('getckal-form');
+getckalForm.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
 
-  const gender = getSelectedValue('gender');
-  const age = getInputNumberValue('age');
-  const weight = getInputNumberValue('weight');
-  const height = getInputNumberValue('height');
-  const activityLevel = getSelectedValue('activity_level');
+  const gender = selected('gender');
+  const age = inputNumber('age');
+  const weight = inputNumber('weight');
+  const height = inputNumber('height');
+  const activityLevel = selected('activity_level');
 
   const tmb = Math.round(
     gender === 'female'
@@ -18,6 +20,7 @@ function handleSubmit(event) {
   const maintenance = Math.round(tmb * Number(activityLevel));
   const loseWeight = maintenance - 450;
   const gainWeight = maintenance + 450;
+  const water = weight * 0.05;
 
   const layout = `
     <h2>Aqui está o resultado:</h2>
@@ -36,20 +39,12 @@ function handleSubmit(event) {
         <li>
           Para ganhar peso você precisa consumir em média <strong>${gainWeight} calorias</strong>.
         </li>
+        <li>
+          Para manter-se hidratado, você precisa beber diariamente <strong>${water}L de água</strong>.
+        </li>
       </ul>
     </div>
   `;
 
-  const result = document.getElementById('result');
-
-  result.innerHTML = layout;
-}
-
-function getSelectedValue(id) {
-  const select = document.getElementById(id);
-  return select.options[select.selectedIndex].value;
-}
-
-function getInputNumberValue(id) {
-  return Number(document.getElementById(id).value);
+  setResult('cal-result', layout);
 }
