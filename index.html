@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IRC fit</title>
   <link href="assets/css/styles.css" rel="stylesheet" />
+  <link href="assets/css/tabs.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -14,8 +15,17 @@
       <img src="assets/images/irc-fit-logo.svg" alt="IRC fit" />
     </header>
 
-    <div class="content">
-      <h1>Calculadora de calorias</h1>
+    <div class="menu">
+      <h2 class="menu-button" id="calc-button">Calculadora de calorias</h2>
+      <h2 class="menu-button" id="count-button">Contador de macro-nutrientes</h2>
+      <h2 class="menu-button" id="how-button">Como usar?</h2>
+    </div>
+
+    <div class="content hidden" id="calc-content">
+      <div class="title">
+        <img src="assets/images/irc-fit-back.svg" alt="IRC fit" />
+        <h1>Calculadora de calorias</h1>
+      </div>
       <form id="getckal-form">
         <div class="form-group">
           <label for="gender">Seu sexo</label>
@@ -46,7 +56,6 @@
             <option value="1.9">Atividade muito intensa</option>
           </select>
         </div>
-
         <div class="form-group">
           <button type="submit">Calcular!</button>
         </div>
@@ -54,35 +63,110 @@
       <div class="result-container" id="cal-result"></div>
     </div>
 
-    <div class="content">
-      <h1>Contador de macro-nutrientes</h1>
-      <form action="" id="getmacros-form">
+    <div class="content hidden" id="count-content">
+      <div class="title">
+        <img src="./assets/images/irc-fit-back.svg">
+        <h1>Contador de macro-nutrientes</h1>
+      </div>
+      <form id="getmacros-form">
         <div class="form-group">
           <label for="">Calorias <small>kcal</small></label>
           <input type="number" id="calories" />
         </div>
-        <div class="grid-row">
+
+        <div class="grid-row-3">
           <div class="form-group">
-            <label for="">Carboidrato <small>%</small></label>
-            <input type="number" id="carbo" />
+            <label for="">Macro</label>
+            <input type="text" value="Carboidrato" disabled>
           </div>
           <div class="form-group">
-            <label for="">Proteína <small>%</small></label>
-            <input type="number" id="protein" />
+            <label for="g-carbo">Peso <small>(g)</small></label>
+            <input type="number" name="g-carbo" id="g-carbo" class="changeListenable">
           </div>
           <div class="form-group">
-            <label for="">Gordura <small>%</small></label>
-            <input type="number" id="fat" />
+            <label for="p-carbo">% da dieta</label>
+            <input type="number" name="p-carbo" id="p-carbo" class="changeListenable">
           </div>
         </div>
+
+        <div class="grid-row-3">
+          <div class="form-group">
+            <label for="">Macro</label>
+            <input type="text" value="Proteína" disabled>
+          </div>
+          <div class="form-group">
+            <label for="g-protein">Peso <small>(g)</small></label>
+            <input type="number" name="g-protein" id="g-protein" class="changeListenable">
+          </div>
+          <div class="form-group">
+            <label for="p-protein">% da dieta</label>
+            <input type="number" name="p-protein" id="p-protein" class="changeListenable">
+          </div>
+        </div>
+
+        <div class="grid-row-3">
+          <div class="form-group">
+            <label for="">Macro</label>
+            <input type="text" value="Gordura" disabled>
+          </div>
+          <div class="form-group">
+            <label for="g-fat">Peso <small>(g)</small></label>
+            <input type="number" name="g-fat" id="g-fat" class="changeListenable">
+          </div>
+          <div class="form-group">
+            <label for="p-fat">% da dieta</label>
+            <input type="number" name="p-fat" id="p-fat" class="changeListenable">
+          </div>
+        </div>
+
         <div class="form-group">
-          <button type="submit">Calcular!</button>
+          <button type="submit">Gerar gráfico!</button>
         </div>
       </form>
-      <div class="result-container" id="macros-result"></div>
+      <div class="result-container" id="macros-result">
+        <div class="result-content hidden">
+          <div id="donutchart" style="width: 480px; height: 300px;"></div>
+        </div>
+      </div>
     </div>
-  </div>
 
+    <div class="content hidden" id="how-content">
+      <div class="title">
+        <img src="./assets/images/irc-fit-back.svg">
+        <h1>Como usar?</h1>
+      </div>
+
+      <h2>Calculadora de calorias</h2>
+      <ol>
+        <li>Preencha corretamente todas as informações.</li>
+        <li>Clique no botão calcular.</li>
+        <li>Veja seu gasto calórico diário aproximado e as recomendações para cada objetivo.</li>
+        <li>Saiba a quantidade ideal de água.</li>
+      </ol>
+
+      <h2>Contador de macro-nutrientes</h2>
+      <ol>
+        <li>Informe o número de calorias obtido na calculadora, de acordo com seu objetivo.</li>
+        <li>Defina a divisão de macro-nutrientes, de acordo com seu objetivo (Ex: carb-40%, prot-40%, gor-20%).</li>
+        <li>Preencha uma coluna, e a outra será preenchida automaticamente. Se você for iniciante, sugiro que preencha a
+          coluna de %.</li>
+        <li>A soma dos valores da última coluna deve ser 99 ou 100.</li>
+        <li>Clique em gerar gŕafico.</li>
+      </ol>
+    </div>
+
+  </div>
+  <footer>
+    <span>
+      Desenvolvido por iRock way
+      <a href="https://www.linkedin.com/in/felipe-rocha-67066035/"
+        title="Me adicione no linkedIn">LinkedIn</a>&nbsp;|&nbsp;
+      <a href="https://github.com/feliperocha93" title="Conheça meu portfolio">Github</a>
+    </span>
+  </footer>
+  <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9" type="text/javascript"></script>
+  <script src="assets/js/menu.js" type="module"></script>
   <script src="assets/js/macros.js" type="module"></script>
   <script src="assets/js/calories.js" type="module"></script>
 </body>

@@ -1,4 +1,5 @@
 import { inputNumber, selected, setResult } from './generic.js';
+import { backHome } from './menu.js';
 
 const getckalForm = document.getElementById('getckal-form');
 getckalForm.addEventListener('submit', handleSubmit);

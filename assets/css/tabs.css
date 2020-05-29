@@ -1,0 +1,13 @@
+.hidden {
+  display: none;
+}
+
+.content,
+.menu-button {
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

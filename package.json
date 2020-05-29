@@ -9,8 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "serve": "^11.3.0"
-  },
-  "dependencies": {}
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "sweetalert2": "^9.13.1"
+  }
 }
