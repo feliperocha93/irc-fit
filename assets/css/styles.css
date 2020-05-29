@@ -35,16 +35,12 @@ header {
 
 .title {
   display: flex;
-  max-height: 74px;
-  overflow: hidden;
 }
 
 .title img {
   cursor: pointer;
-  margin-right: 24px;
+  margin-right: 10px;
   transition: .3s ease;
-  width: 36px;
-  height: auto;
 }
 
 .title img:hover {
