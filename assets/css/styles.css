@@ -42,6 +42,7 @@ header {
   margin-right: 24px;
   transition: .3s ease;
   width: 36px;
+  height: auto;
 }
 
 .title img:hover {
