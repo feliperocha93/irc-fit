@@ -35,6 +35,8 @@ header {
 
 .title {
   display: flex;
+  max-height: 74px;
+  overflow: hidden;
 }
 
 .title img {
